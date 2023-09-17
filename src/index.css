@@ -4,4 +4,8 @@
 
 html, body, #root {
   @apply h-full bg-slate-50;
+  background-image: url('./assets/design/home-bg-ai-3300x3000-1-scaled.jpg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

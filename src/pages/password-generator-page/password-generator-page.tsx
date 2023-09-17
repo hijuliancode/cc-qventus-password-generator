@@ -2,7 +2,7 @@ import { CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, ReloadOutlined 
 
 export const PasswordGeneratorPage = () => {
   return (
-    <div className="bg-white flex flex-col pt-4 pb-6 px-4 rounded-md shadow-xl h-full">
+    <div className="bg-white/30 backdrop-blur-sm flex flex-col pt-4 pb-6 px-4 rounded-md shadow-xl h-full">
       {/* Tittle */}
       <h1 className="font-regular text-xl leading-none mb-4 flex w-full">Password Generator</h1>
 
@@ -14,19 +14,19 @@ export const PasswordGeneratorPage = () => {
           {/* Password Filters */}
           <div className="flex flex-col gap-3 mt-4">
             <div className="flex items-center gap-3">
-              <input type="checkbox" className="rounded-md border-gray-400" />
+              <input type="checkbox" checked className="rounded-md border-gray-400" />
               <p>Include special characters</p>
             </div>
             <div className="flex items-center gap-3">
-              <input type="checkbox" className="rounded-md border-gray-400" />
+              <input type="checkbox" checked className="rounded-md border-gray-400" />
               <p>Include numbers</p>
             </div>
             <div className="flex items-center gap-3">
-              <input type="checkbox" className="rounded-md border-gray-400" />
+              <input type="checkbox" checked className="rounded-md border-gray-400" />
               <p>Include uppercase letters</p>
             </div>
             <div className="flex items-center gap-3">
-              <input type="checkbox" className="rounded-md border-gray-400" />
+              <input type="checkbox" checked className="rounded-md border-gray-400" />
               <p>Exclude consecutive repeating characters</p>
             </div>
           </div>
