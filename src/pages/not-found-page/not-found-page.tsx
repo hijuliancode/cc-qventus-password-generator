@@ -1,7 +1,7 @@
-import React from 'react'
+import { PublicLayout } from '@/layouts/index'
 
 export const NotFoundPage = () => {
   return (
-    <div>not-found-page</div>
+    <PublicLayout>not-found-page</PublicLayout>
   )
 }
