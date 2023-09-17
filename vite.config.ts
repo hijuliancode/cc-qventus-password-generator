@@ -13,6 +13,7 @@ export default defineConfig({
       '@common:constants': path.resolve(__dirname, '/src/common/constants'),
       '@common:models': path.resolve(__dirname, '/src/common/models'),
       '@common:patterns': path.resolve(__dirname, '/src/common/patterns'),
+      '@common:utils': path.resolve(__dirname, '/src/common/utils'),
       '@common:router': path.resolve(__dirname, '/src/common/router'),
       '@common:types': path.resolve(__dirname, '/src/common/types'),
       '@components': path.resolve(__dirname, '/src/components'),

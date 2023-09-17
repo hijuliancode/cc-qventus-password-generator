@@ -29,6 +29,7 @@
       "@common:constants/*": ["src/common/constants/*"],
       "@common:models/*": ["src/common/models/*"],
       "@common:patterns/*": ["src/common/patterns/*"],
+      "@common:utils/*": ["src/common/utils/*"],
       "@common:router/*": ["src/common/router/*"],
       "@common:types/*": ["src/common/types/*"],
       "@components/*": ["src/components/*"],
