@@ -1,4 +1,4 @@
-import React from 'react'
+import { ContainerComponent } from '@/components'
 
 interface PublicLayoutProps {
   children: React.ReactNode
@@ -6,9 +6,9 @@ interface PublicLayoutProps {
 
 export const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (
-    <div>
+    <ContainerComponent>
       <h1>Public Layout</h1>
       {children}
-    </div>
+    </ContainerComponent>
   )
 }

@@ -1,8 +1,27 @@
 
 .Header {
-  @apply bg-white flex justify-between items-center py-2 px-4 rounded-md mb-6 shadow-lg;
+  @apply bg-white
+    flex
+    justify-center
+    md:justify-between
+    items-center
+    py-2
+    px-4
+    rounded-md
+    mb-6
+    shadow-lg
+  ;
 }
 
 .NavLink {
-  @apply bg-white transition-all ease-linear py-0.5 px-2 rounded-md leading-none text-gray-800 hover:text-purple-700 active:bg-purple-50;
+  @apply bg-white
+    transition-all
+    ease-linear
+    py-0.5
+    px-2
+    rounded-md
+    leading-none
+    text-gray-800
+    hover:text-purple-700
+  active:bg-purple-50;
 }

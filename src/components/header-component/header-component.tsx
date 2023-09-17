@@ -39,7 +39,7 @@ export const Header = () => {
       </Link>
 
       {/* Navigation */}
-      <nav>
+      <nav className="hidden md:flex">
         <ul className="flex">
           {navItems && navItems.map((navItem, index) => (
             <li key={index}>
@@ -59,7 +59,6 @@ export const Header = () => {
               }
             </li>
           ))}
-
         </ul>
       </nav>
     </header>

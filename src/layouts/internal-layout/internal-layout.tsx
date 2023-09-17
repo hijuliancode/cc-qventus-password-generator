@@ -1,5 +1,4 @@
-import React from 'react'
-import { Header } from '@/components'
+import { Header, ContainerComponent } from '@/components'
 
 interface InternalLayoutProps {
   children: React.ReactNode
@@ -7,11 +6,13 @@ interface InternalLayoutProps {
 
 export const InternalLayout = ({ children }: InternalLayoutProps) => {
   return (
-    <div className='py-6 px-8'>
-      <Header />
-      <main>
-        {children}
-      </main>
-    </div>
+    <ContainerComponent>
+      <div className='py-6 px-8'>
+        <Header />
+        <main>
+          {children}
+        </main>
+      </div>
+    </ContainerComponent>
   )
 }
