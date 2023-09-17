@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, EyeInvisibleOutlined, EyeOutlined, ReloadOutlined } from "@ant-design/icons"
-import { patternSpecialChar, patternNumber, patternUppercase, patternConsecutive } from '@common:patterns/index'
+import { CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, EyeInvisibleOutlined, EyeOutlined, HeartOutlined, ReloadOutlined } from "@ant-design/icons"
+import { patternSpecialChar, patternNumber, patternUppercase } from '@common:patterns/index'
 import { hasConsecutiveCharacters } from "@/common/utils"
 import { lowercase, numbers, specialCharacters, uppercase } from "@/common"
 
@@ -8,10 +8,17 @@ export const PasswordGeneratorPage = () => {
   const [type, setType] = useState<'password' | 'text'>('password')
   const [password, setPassword] = useState('')
 
-  const [hasSpecialChar, setHasSpecialChar] = useState(true)
-  const [hasNumber, setHasNumber] = useState(true)
-  const [hasUppercase, setHasUppercase] = useState(true)
-  const [hasConsecutive, setHasConsecutive] = useState(true)
+  const [passwordLength] = useState(18)
+
+  const [hasSpecialChar, setHasSpecialChar] = useState(false)
+  const [hasNumber, setHasNumber] = useState(false)
+  const [hasUppercase, setHasUppercase] = useState(false)
+  const [hasConsecutive, setHasConsecutive] = useState(false)
+
+  const [includeSpecialChar, setIncludeSpecialChar] = useState(true)
+  const [includeNumber, setIncludeNumber] = useState(true)
+  const [includeUppercase, setIncludeUppercase] = useState(true)
+  const [includeConsecutive, setIncludeConsecutive] = useState(true)
 
   const handleChange = (value: string) => {
     setPassword(value)
@@ -48,15 +55,15 @@ export const PasswordGeneratorPage = () => {
   const generatePassword = () => {
     let newPassword = '';
 
-    if (hasSpecialChar) {
+    if (includeSpecialChar) {
       newPassword = newPassword + specialCharacters;
     }
 
-    if (hasNumber) {
+    if (includeNumber) {
       newPassword = newPassword + numbers;
     }
 
-    if (hasUppercase) {
+    if (includeUppercase) {
       newPassword = newPassword + uppercase + lowercase;
     }
 
@@ -65,15 +72,15 @@ export const PasswordGeneratorPage = () => {
 
   const handleGeneratePassword = (): void => {
     const newPassword = generatePassword();
-    console.log('newPassword', newPassword)
     setPassword(formatPassword(newPassword));
+    handleChange(formatPassword(newPassword));
   };
 
   const formatPassword = (listOfCharacters: string): string => {
     let newPassword = '';
     const listOfCharactersLength = listOfCharacters.length;
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < passwordLength; i++) {
       newPassword += listOfCharacters.charAt(Math.floor(Math.random() * listOfCharactersLength));
     }
 
@@ -84,7 +91,6 @@ export const PasswordGeneratorPage = () => {
     }
 
     return newPassword;
-
   };
 
 
@@ -100,6 +106,7 @@ export const PasswordGeneratorPage = () => {
             <input
               type={type}
               value={password}
+              maxLength={passwordLength}
               onChange={(e) => handleChange(e.target.value)}
               className="rounded-s-lg border-gray-400 w-full border-r-0"
               placeholder="Please put your password"
@@ -128,8 +135,8 @@ export const PasswordGeneratorPage = () => {
           <div className="flex flex-col gap-3 mt-4">
             <div className="flex items-center gap-3">
               <input
-                checked={hasSpecialChar}
-                onChange={(e) => setHasSpecialChar((e.target as HTMLInputElement).checked)}
+                checked={includeSpecialChar}
+                onChange={(e) => setIncludeSpecialChar((e.target as HTMLInputElement).checked)}
                 id="id-check-special-characters"
                 type="checkbox"
                 className="rounded-md border-gray-400 cursor-pointer"
@@ -138,8 +145,8 @@ export const PasswordGeneratorPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <input
-                checked={hasNumber}
-                onChange={(e) => setHasNumber((e.target as HTMLInputElement).checked)}
+                checked={includeNumber}
+                onChange={(e) => setIncludeNumber((e.target as HTMLInputElement).checked)}
                 id="id-check-numbers"
                 type="checkbox"
                 className="rounded-md border-gray-400 cursor-pointer"
@@ -148,8 +155,8 @@ export const PasswordGeneratorPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <input
-                checked={hasUppercase}
-                onChange={(e) => setHasUppercase((e.target as HTMLInputElement).checked)}
+                checked={includeUppercase}
+                onChange={(e) => setIncludeUppercase((e.target as HTMLInputElement).checked)}
                 id="id-check-uppercase"
                 type="checkbox"
                 className="rounded-md border-gray-400 cursor-pointer"
@@ -158,13 +165,13 @@ export const PasswordGeneratorPage = () => {
             </div>
             <div className="flex items-center gap-3">
               <input
-                checked={hasConsecutive}
-                onChange={(e) => setHasConsecutive((e.target as HTMLInputElement).checked)}
+                checked={includeConsecutive}
+                onChange={(e) => setIncludeConsecutive((e.target as HTMLInputElement).checked)}
                 id="id-check-consecutive"
                 type="checkbox"
                 className="rounded-md border-gray-400 cursor-pointer"
               />
-              <label htmlFor="id-check-consecutive" className="cursor-pointer" >Exclude consecutive repeating characters</label>
+              <label htmlFor="id-check-consecutive" className="cursor-pointer">Has NO consecutive letters</label>
             </div>
           </div>
         </div>
@@ -200,19 +207,19 @@ export const PasswordGeneratorPage = () => {
               ) : (
                 <CloseCircleOutlined className="text-red-500 text-2xl leading-none" />
               )}
-              <p>Has no consecutive repeating characters</p>
+              <p>Has NO consecutive letters***</p>
             </li>
           </ul>
         </div>
       </div>
       <div className="flex">
-        <button onClick={handleGeneratePassword} type="button" className="bg-blue-500 text-white rounded-md px-4 py-2 w-full flex items-center justify-center gap-3">
+        <button onClick={handleGeneratePassword} type="button" className="bg-blue-500 text-white rounded-md px-4 py-2 w-full flex items-center justify-center gap-3 active:bg-blue-700 transition-all ease-linear">
           Generate Password
           <ReloadOutlined />
         </button>
-        <button onClick={handleCopyPassword} type="button" className="bg-gray-500 text-white rounded-md px-4 py-2 w-full ml-4 flex items-center justify-center gap-3">
-          Copy Password
-          <CopyOutlined />
+        <button disabled type="button" className="bg-pink-500 text-white rounded-md px-4 py-2 w-full ml-4 flex items-center justify-center gap-3 disabled:bg-pink-100 disabled:text-pink-300 disabled:cursor-no-drop">
+          Save Password
+          <HeartOutlined />
         </button>
       </div>
     </div>
