@@ -1,12 +1,22 @@
-import './App.css'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 function App() {
+  const [isAuthenticated] = React.useState(true)
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      {isAuthenticated ? (
+        <div className='bg-green-500'>
+          {/* TODO INTERNAL LAYOUT */}
+          <Outlet />
+        </div>
+      ) : (
+        <div className='bg-red-500'>
+          {/* TODO: PUBLIC LAYOUT */}
+          <Outlet />
+        </div>
+      )}
     </>
   )
 }
