@@ -40,6 +40,49 @@ Build the app for production to the `dist` folder.
 $ npm run build
 ```
 
+## Scaffolding
+   
+   ```bash
+   .
+   ├── dist
+   ├── node_modules
+   ├── public
+   ├── src
+   │   ├── assets
+   │     ├── icons
+   │     ├── content
+   │     ├── design
+   │   ├── common
+   │     ├── constants
+   │     ├── models
+   │     ├── patterns
+   │     ├── router
+   │     ├── types
+   │     ├── utils
+   │   ├── components
+   │     ├── container-component
+   │     ├── header-component
+   │   ├── context
+   │   ├── hooks
+   │   ├── layouts
+   │   ├── pages
+   │   ├── services
+   │   ├── App.tsx
+   │   ├── index.css
+   │   └── main.tsx
+   ├── .editorconfig
+   ├── .eslintrc.js
+   ├── .gitignore
+   ├── .prettierrc
+   ├── index.html
+   ├── package.json
+   ├── postcss.config.js
+   ├── README.md
+   ├── tsconfig.json
+   └── vite.config.ts
+   ```
+
+
 
 ## Description
 
