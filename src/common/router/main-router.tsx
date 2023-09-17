@@ -13,9 +13,15 @@ export const MainRouter = () => {
       path: '/',
       element: <App />,
       children: [
-        { path: '/', element: <PasswordGeneratorPage /> },
-        { path: 'passwords-generator', element: <PasswordGeneratorPage /> },
-        { path: 'passwords-list', element: <PasswordsListPage /> },
+        {
+          path: '/',
+          element: <PasswordGeneratorPage />,
+        },
+        {
+          path: 'passwords-list',
+          element: <PasswordsListPage />,
+
+        },
       ],
     },
     { path: '*', element: <NotFoundPage /> },
